@@ -1,4 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
+import MobileMenu from "../islands/MobileMenu.tsx";
 
 export default function GrowthPlan() {
   return (
@@ -7,480 +8,496 @@ export default function GrowthPlan() {
         <title>Professional Growth Plan - Mohammed Sebbagh</title>
         <meta name="description" content="Professional growth plan focused on physics education innovation and educational technology integration." />
         <script src="https://cdn.tailwindcss.com"></script>
+        <style>{`
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+          
+          .moroccan-bg {
+            background-image: url('/moroccan-pattern.png');
+            background-size: 300px 300px;
+            background-repeat: repeat;
+            position: relative;
+          }
+          
+          .moroccan-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248, 250, 252, 0.95);
+            pointer-events: none;
+            z-index: 1;
+          }
+          
+          .content-layer {
+            position: relative;
+            z-index: 2;
+          }
+          
+          .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          }
+          
+          .mobile-menu.open {
+            transform: translateX(0);
+          }
+          
+          .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s;
+            position: relative;
+          }
+          
+          .hamburger-top,
+          .hamburger-middle,
+          .hamburger-bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: currentColor;
+            transform: rotate(0);
+            transition: all 0.3s ease;
+          }
+          
+          .hamburger-middle {
+            transform: translateY(7px);
+          }
+          
+          .hamburger-bottom {
+            transform: translateY(14px);
+          }
+          
+          .hamburger.open .hamburger-top {
+            transform: rotate(45deg) translateY(6px) translateX(6px);
+          }
+          
+          .hamburger.open .hamburger-middle {
+            opacity: 0;
+          }
+          
+          .hamburger.open .hamburger-bottom {
+            transform: rotate(-45deg) translateY(6px) translateX(-6px);
+          }
+          
+          .modern-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+              0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+          }
+          
+          .modern-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+              0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          }
+          
+          .heading-font { font-family: 'Playfair Display', serif; }
+          .body-font { font-family: 'Inter', sans-serif; }
+          
+          .geometric-divider {
+            height: 2px;
+            background: linear-gradient(90deg, 
+              transparent 0%, 
+              rgba(59, 130, 246, 0.3) 20%, 
+              rgba(245, 158, 11, 0.5) 50%, 
+              rgba(59, 130, 246, 0.3) 80%, 
+              transparent 100%
+            );
+            position: relative;
+          }
+          
+          .geometric-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background: #f59e0b;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          }
+          
+          .geometric-bullet {
+            width: 6px;
+            height: 6px;
+            background: #3b82f6;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            margin-right: 12px;
+            flex-shrink: 0;
+            margin-top: 8px;
+          }
+        `}</style>
       </Head>
       
-      <div class="min-h-screen bg-gray-50">
+      <div class="min-h-screen bg-gray-50 moroccan-bg body-font">
         {/* Header */}
-        <header class="bg-white shadow-sm border-b">
-          <div class="container mx-auto px-4 py-4 max-w-4xl">
-            <div class="flex items-center justify-between">
-              <div>
-                <h1 class="text-2xl font-bold text-gray-800">Mohammed Sebbagh</h1>
-                <p class="text-gray-600">Physics Teacher & Educational Technology Developer</p>
+        <header class="bg-white/90 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-10 content-layer">
+          <div class="container mx-auto px-4 sm:px-6 py-4 max-w-6xl">
+            <div class="flex justify-between items-center">
+              <div class="text-left">
+                <h1 class="text-xl sm:text-2xl font-bold heading-font text-gray-900">
+                  Mohammed Sebbagh
+                </h1>
+                <p class="text-sm text-gray-600 hidden sm:block">
+                  Physics Teacher & Educational Technology Developer
+                </p>
               </div>
+              
+              <nav class="hidden md:flex space-x-8">
+                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Home</a>
+                <a href="/philosophy" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Philosophy</a>
+                <a href="/resume" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Resume</a>
+                <a href="/growth-plan" class="text-blue-600 font-semibold px-3 py-2 border-b-2 border-blue-600">Growth Plan</a>
+              </nav>
+              
+              <MobileMenu />
             </div>
           </div>
         </header>
 
-        {/* Navigation */}
-        <nav class="bg-gray-100 border-b">
-          <div class="container mx-auto px-4 max-w-4xl">
-            <ul class="flex space-x-8 py-4">
-              <li><a href="/" class="font-medium text-gray-700 hover:text-blue-600">Home</a></li>
-              <li><a href="/philosophy" class="font-medium text-gray-700 hover:text-blue-600">Teaching Philosophy</a></li>
-              <li><a href="/resume" class="font-medium text-gray-700 hover:text-blue-600">Resume</a></li>
-              <li><a href="/growth-plan" class="font-medium text-blue-600 border-b-2 border-blue-600 pb-1">Growth Plan</a></li>
-            </ul>
-          </div>
-        </nav>
-
         {/* Main Content */}
-        <main class="container mx-auto px-4 py-8 max-w-4xl">
-          <div class="bg-white rounded-lg shadow-lg p-8">
+        <main class="container mx-auto px-4 sm:px-6 py-8 sm:py-16 max-w-4xl content-layer">
+          <div class="modern-card rounded-2xl p-6 sm:p-12">
+            
             <header class="text-center mb-12">
-              <h1 class="text-4xl font-bold text-gray-800 mb-4">Professional Growth Plan</h1>
-              <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+              <h1 class="text-3xl sm:text-5xl font-bold heading-font text-gray-900 mb-4">
+                Professional Growth Plan
+              </h1>
+              <div class="geometric-divider w-32 sm:w-48 mx-auto mb-6"></div>
+              <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                 Bridging physics education and technology innovation for enhanced student learning
               </p>
             </header>
 
-            {/* Professional Development Journey */}
-            <section class="mb-12">
-              <h2 class="text-2xl font-semibold text-blue-600 mb-6 border-b-2 border-blue-100 pb-2">
-                How I Have Developed as a Teacher
-              </h2>
-              <div class="bg-blue-50 p-6 rounded-lg mb-6">
-                <p class="text-gray-700 leading-relaxed mb-4">
-                  My journey as an educator has been shaped by my unique background combining physics education with software engineering expertise. Starting as a teaching assistant at NJIT in 2017, I've evolved from supporting pre-college programs to leading curriculum development for AP Physics at North Star Academy and now bringing innovative approaches to physics education at Union City Board of Education.
-                </p>
-              </div>
+            <div class="space-y-12 sm:space-y-16">
               
-              <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white border-l-4 border-blue-600 p-6 shadow-sm">
-                  <h3 class="font-semibold text-blue-700 mb-3">Early Career (2017-2019)</h3>
-                  <ul class="space-y-2 text-gray-700 text-sm">
-                    <li>• Focused on foundational teaching skills and classroom management</li>
-                    <li>• Developed understanding of secondary physics education</li>
-                    <li>• Built relationships with students and families</li>
-                    <li>• Applied physics background to create engaging lessons</li>
-                  </ul>
-                </div>
-                <div class="bg-white border-l-4 border-green-600 p-6 shadow-sm">
-                  <h3 class="font-semibold text-green-700 mb-3">Current Expertise (2019-Present)</h3>
-                  <ul class="space-y-2 text-gray-700 text-sm">
-                    <li>• Leadership in AP Physics curriculum development</li>
-                    <li>• Integration of educational technology and software development</li>
-                    <li>• Mentoring 80+ students annually in scientific thinking</li>
-                    <li>• Cross-functional collaboration and team leadership</li>
-                    <li>• Development of SMART Web Applications for education</li>
-                  </ul>
-                </div>
-              </div>
-              
-              <div class="mt-6 bg-gradient-to-r from-blue-100 to-green-100 p-6 rounded-lg">
-                <h3 class="font-semibold text-gray-800 mb-3">Key Growth Areas</h3>
-                <p class="text-gray-700 leading-relaxed">
-                  My development has been marked by the integration of my technical background with educational practice. Moving from traditional physics instruction to inquiry-based learning, I've learned to facilitate student-led investigations while leveraging my software engineering skills to create innovative educational tools. This unique combination allows me to approach physics education from both scientific and technological perspectives.
-                </p>
-              </div>
-            </section>
-
-            {/* Professional Development Activities */}
-            <section class="mb-12">
-              <h2 class="text-2xl font-semibold text-green-600 mb-6 border-b-2 border-green-100 pb-2">
-                Professional Development Activities
-              </h2>
-              
-              <div class="space-y-6">
-                <div class="bg-green-50 p-6 rounded-lg">
-                  <h3 class="text-lg font-semibold text-green-700 mb-4">Educational Technology Development</h3>
-                  <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Software Engineering Projects</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Developed heap memory tracking tools at OSLabs Beta</li>
-                        <li>• Created SMART Web Applications for educational use</li>
-                        <li>• Contributed to open-source educational projects</li>
-                        <li>• Applied modern technology stack to education solutions</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Educational Technology Integration</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Integrated software tools into physics curriculum</li>
-                        <li>• Developed digital resources for student investigations</li>
-                        <li>• Enhanced data analysis capabilities in labs</li>
-                        <li>• Created technology-enhanced assessment tools</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="mt-4 p-4 bg-white rounded border-l-4 border-green-600">
-                    <p class="text-gray-700 text-sm">
-                      <strong>Impact:</strong> My software development experience has revolutionized how I approach physics education, allowing me to create custom tools that enhance student understanding of complex concepts and provide innovative ways to visualize and analyze scientific data.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="bg-green-50 p-6 rounded-lg">
-                  <h3 class="text-lg font-semibold text-green-700 mb-4">Physics Education Leadership</h3>
-                  <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Curriculum Development</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• AP Physics curriculum planning and alignment</li>
-                        <li>• College-ready instruction design</li>
-                        <li>• Culturally sustaining pedagogy integration</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Professional Development</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Delivered yearlong PD sessions</li>
-                        <li>• Mentored fellow educators</li>
-                        <li>• Led cross-functional team meetings</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Team Leadership</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• 11th Grade Team Lead responsibilities</li>
-                        <li>• Collaborative agenda creation</li>
-                        <li>• Learning environment optimization</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="bg-green-50 p-6 rounded-lg">
-                  <h3 class="text-lg font-semibold text-green-700 mb-4">Scientific Research & Application</h3>
-                  <p class="text-gray-700 mb-4">
-                    My background in Applied Physics with specialization in Optical Science and Engineering from NJIT provides a strong foundation for bringing cutting-edge scientific research into the classroom.
-                  </p>
-                  <div class="bg-white p-4 rounded border-l-4 border-green-600">
-                    <h4 class="font-medium text-gray-800 mb-2">Research-to-Practice Integration</h4>
-                    <p class="text-gray-700 text-sm">
-                      I continuously incorporate recent developments in physics research, particularly in optics and engineering applications, into my curriculum. This ensures students understand not just fundamental principles but also their real-world applications in modern technology and research.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Collaboration Example */}
-            <section class="mb-12">
-              <h2 class="text-2xl font-semibold text-purple-600 mb-6 border-b-2 border-purple-100 pb-2">
-                Collaborative Professional Learning
-              </h2>
-              
-              <div class="bg-purple-50 p-6 rounded-lg">
-                <h3 class="text-lg font-semibold text-purple-700 mb-4">
-                  Specific Example: Cross-Functional AP Physics Curriculum Development
-                </h3>
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 class="font-medium text-gray-800 mb-3">The Collaboration</h4>
-                    <p class="text-gray-700 text-sm mb-4">
-                      As Curriculum Planner for AP Physics at North Star Academy, I collaborated with Content Directors, Instructional Leaders, and a diverse group of teachers to design engaging, rigorous, college-ready, and culturally sustaining instruction. This involved weekly planning sessions, pilot implementations, and continuous feedback integration.
-                    </p>
-                    
-                    <h4 class="font-medium text-gray-800 mb-3">My Contributions</h4>
-                    <ul class="space-y-1 text-gray-700 text-sm">
-                      <li>• Led physics content development and lab design</li>
-                      <li>• Integrated educational technology solutions</li>
-                      <li>• Delivered professional development sessions</li>
-                      <li>• Coordinated school-wide priority alignment</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 class="font-medium text-gray-800 mb-3">Professional Growth</h4>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                      <li>• <strong>Enhanced Leadership Skills:</strong> Learned to facilitate diverse teams and manage complex curriculum projects</li>
-                      <li>• <strong>Improved Communication:</strong> Developed ability to translate technical physics concepts for broader educational audiences</li>
-                      <li>• <strong>Data-Driven Decision Making:</strong> Enhanced skills in using student data to inform instructional decisions</li>
-                      <li>• <strong>Cultural Responsiveness:</strong> Deepened understanding of culturally sustaining pedagogical practices</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="mt-6 p-4 bg-white rounded border-l-4 border-purple-600">
-                  <h4 class="font-medium text-gray-800 mb-2">Teaching Impact</h4>
-                  <p class="text-gray-700 text-sm">
-                    This collaboration resulted in a comprehensive AP Physics curriculum that improved student engagement and college readiness scores. The experience taught me the value of interdisciplinary collaboration and has influenced my approach to integrating technology with traditional physics instruction, leading to more innovative and effective teaching strategies.
-                  </p>
-                </div>
-              </div>
-            </section>
-
-            {/* Professional Resources */}
-            <section class="mb-12">
-              <h2 class="text-2xl font-semibold text-orange-600 mb-6 border-b-2 border-orange-100 pb-2">
-                Utilizing Professional Resources
-              </h2>
-              
-              <div class="bg-orange-50 p-6 rounded-lg">
-                <h3 class="text-lg font-semibold text-orange-700 mb-4">
-                  Specific Example: Integrating Modern Software Development Practices in Physics Education
-                </h3>
-                
-                <div class="space-y-4">
-                  <div class="bg-white p-4 rounded border-l-4 border-orange-600">
-                    <h4 class="font-medium text-gray-800 mb-2">Resource Identification</h4>
-                    <p class="text-gray-700 text-sm">
-                      Recognizing the potential to enhance physics education through technology, I leveraged resources from the software development community, including open-source educational frameworks, modern web development tools, and professional development platforms like GitHub and educational technology conferences.
-                    </p>
-                  </div>
-                  
-                  <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-3">Resources Utilized</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Open-source educational software frameworks</li>
-                        <li>• Modern web development tools and languages</li>
-                        <li>• Educational technology research papers</li>
-                        <li>• Physics education research from AAPT and APS</li>
-                        <li>• Software engineering best practices</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-3">Implementation Strategy</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Developed SMART Web Applications for classroom use</li>
-                        <li>• Created interactive data analysis tools</li>
-                        <li>• Integrated memory usage tracking for computational physics</li>
-                        <li>• Built collaborative platforms for student investigations</li>
-                        <li>• Established feedback loops for continuous improvement</li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  <div class="bg-white p-4 rounded border-l-4 border-orange-600">
-                    <h4 class="font-medium text-gray-800 mb-2">Teaching Improvement</h4>
-                    <p class="text-gray-700 text-sm">
-                      Implementing software development principles in physics education has transformed my classroom into a more interactive and data-driven learning environment. Students now engage with physics concepts through hands-on coding, data visualization, and digital modeling, leading to improved conceptual understanding and increased engagement with STEM fields. This approach has also enhanced my ability to track student progress and adapt instruction in real-time.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Professional Goal */}
-            <section class="mb-12">
-              <h2 class="text-2xl font-semibold text-red-600 mb-6 border-b-2 border-red-100 pb-2">
-                Specific Professional Growth Goal
-              </h2>
-              
-              <div class="bg-red-50 p-6 rounded-lg">
-                <div class="text-center mb-6">
-                  <h3 class="text-2xl font-bold text-red-700 mb-2">
-                    Goal: Develop Comprehensive Educational Technology Platform for Physics Education
-                  </h3>
-                  <p class="text-gray-600">
-                    Timeline: 3-year development and implementation plan
+              {/* Professional Development Journey */}
+              <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold heading-font text-blue-600 mb-6">
+                  How I Have Developed as a Teacher
+                </h2>
+                <div class="modern-card p-6 sm:p-8 bg-blue-50/50 mb-6">
+                  <p class="text-gray-700 leading-relaxed text-base sm:text-lg mb-4">
+                    My journey as an educator has been shaped by my unique background combining physics education with software engineering expertise. Starting as a teaching assistant at NJIT in 2017, I've evolved from supporting pre-college programs to leading curriculum development for AP Physics.
                   </p>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 class="font-semibold text-red-700 mb-3">Why This Goal?</h4>
-                    <p class="text-gray-700 text-sm mb-4">
-                      Building on my unique combination of physics education expertise and software engineering skills, I aim to create a comprehensive platform that revolutionizes how students interact with physics concepts. This platform will integrate real-time data analysis, interactive simulations, and collaborative tools to enhance inquiry-based learning.
-                    </p>
-                    
-                    <h4 class="font-semibold text-red-700 mb-3">Expected Outcomes</h4>
-                    <ul class="space-y-1 text-gray-700 text-sm">
-                      <li>• Enhanced student engagement in physics concepts</li>
-                      <li>• Improved scientific thinking and data analysis skills</li>
-                      <li>• Increased accessibility for diverse learners</li>
-                      <li>• Scalable solution for physics educators nationwide</li>
-                    </ul>
-                  </div>
-                  
-                  <div>
-                    <h4 class="font-semibold text-red-700 mb-3">Success Indicators</h4>
-                    <ul class="space-y-1 text-gray-700 text-sm">
-                      <li>• Platform adoption by 10+ educational institutions</li>
-                      <li>• Measurable improvement in student AP Physics scores</li>
-                      <li>• Positive feedback from 100+ educators</li>
-                      <li>• Recognition from physics education organizations</li>
-                      <li>• Publication in educational technology journals</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </section>
+                <div class="grid sm:grid-cols-2 gap-6">
+                  <div class="modern-card p-4 sm:p-6 bg-blue-50/30">
+                    <h3 class="font-semibold text-blue-700 mb-3">Early Career (2017-2019)</h3>
+                   <ul class="space-y-2 text-gray-700 text-sm">
+                     <li class="flex items-start">
+                       <span class="geometric-bullet"></span>
+                       <span>Focused on foundational teaching skills and classroom management</span>
+                     </li>
+                     <li class="flex items-start">
+                       <span class="geometric-bullet"></span>
+                       <span>Developed understanding of secondary physics education</span>
+                     </li>
+                     <li class="flex items-start">
+                       <span class="geometric-bullet"></span>
+                       <span>Built relationships with students and families</span>
+                     </li>
+                   </ul>
+                 </div>
+                 <div class="modern-card p-4 sm:p-6 bg-green-50/30">
+                   <h3 class="font-semibold text-green-700 mb-3">Current Expertise (2019-Present)</h3>
+                   <ul class="space-y-2 text-gray-700 text-sm">
+                     <li class="flex items-start">
+                       <span class="geometric-bullet" style="background: #10b981;"></span>
+                       <span>Leadership in AP Physics curriculum development</span>
+                     </li>
+                     <li class="flex items-start">
+                       <span class="geometric-bullet" style="background: #10b981;"></span>
+                       <span>Integration of educational technology and software development</span>
+                     </li>
+                     <li class="flex items-start">
+                       <span class="geometric-bullet" style="background: #10b981;"></span>
+                       <span>Mentoring 80+ students annually in scientific thinking</span>
+                     </li>
+                   </ul>
+                 </div>
+               </div>
+             </section>
 
-            {/* Implementation Plan */}
-            <section class="mb-12">
-              <h2 class="text-2xl font-semibent text-indigo-600 mb-6 border-b-2 border-indigo-100 pb-2">
-                Goal Accomplishment Plan
-              </h2>
-              
-              <div class="space-y-6">
-                <div class="bg-indigo-50 p-6 rounded-lg">
-                  <h3 class="text-lg font-semibold text-indigo-700 mb-4">Year 1: Foundation Development</h3>
-                  <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Research & Planning</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Conduct comprehensive needs assessment with physics educators</li>
-                        <li>• Research existing educational technology platforms</li>
-                        <li>• Develop technical specifications and user requirements</li>
-                        <li>• Establish partnerships with educational institutions</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Technical Development</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Build core platform architecture and infrastructure</li>
-                        <li>• Develop interactive simulation modules</li>
-                        <li>• Create data analysis and visualization tools</li>
-                        <li>• Implement collaborative features for student investigations</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="bg-indigo-50 p-6 rounded-lg">
-                  <h3 class="text-lg font-semibold text-indigo-700 mb-4">Year 2: Pilot Implementation</h3>
-                  <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Beta Testing</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Launch beta version with select physics classes</li>
-                        <li>• Collect extensive user feedback and usage data</li>
-                        <li>• Iterate and refine platform based on classroom testing</li>
-                        <li>• Develop comprehensive teacher training materials</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Professional Development</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Present at physics education conferences</li>
-                        <li>• Publish preliminary findings in education journals</li>
-                        <li>• Conduct workshops for physics educators</li>
-                        <li>• Build community of early adopter educators</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="bg-indigo-50 p-6 rounded-lg">
-                  <h3 class="text-lg font-semibold text-indigo-700 mb-4">Year 3: Scale & Impact</h3>
-                  <div class="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Platform Launch</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Full platform release to broader physics education community</li>
-                        <li>• Establish sustainable development and support model</li>
-                        <li>• Create certification program for platform educators</li>
-                        <li>• Develop partnerships with textbook publishers</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Research & Recognition</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Conduct comprehensive impact study on student outcomes</li>
-                        <li>• Apply for educational innovation awards</li>
-                        <li>• Mentor other educator-developers</li>
-                        <li>• Establish research collaborations with universities</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="bg-indigo-50 p-6 rounded-lg">
-                  <h3 class="text-lg font-semibold text-indigo-700 mb-4">Resources and Support</h3>
-                  <div class="grid md:grid-cols-3 gap-4">
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Technical Resources</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Modern web development frameworks</li>
-                        <li>• Cloud computing infrastructure</li>
-                        <li>• Educational content management systems</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Professional Network</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• Physics education research community</li>
-                        <li>• Software development professional networks</li>
-                        <li>• Educational technology innovators</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 class="font-medium text-gray-800 mb-2">Institutional Support</h4>
-                      <ul class="space-y-1 text-gray-700 text-sm">
-                        <li>• School district technology resources</li>
-                        <li>• University research partnerships</li>
-                        <li>• Educational foundation grants</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+             {/* Professional Development Activities */}
+             <section>
+               <h2 class="text-2xl sm:text-3xl font-semibold heading-font text-green-600 mb-6">
+                 Professional Development Activities
+               </h2>
+               
+               <div class="space-y-6">
+                 <div class="modern-card p-6 sm:p-8 bg-green-50/50">
+                   <h3 class="text-lg font-semibold text-green-700 mb-4">Educational Technology Development</h3>
+                   <div class="grid sm:grid-cols-2 gap-4">
+                     <div>
+                       <h4 class="font-medium text-gray-800 mb-2">Software Engineering Projects</h4>
+                       <ul class="space-y-1 text-gray-700 text-sm">
+                         <li class="flex items-start">
+                           <span class="geometric-bullet"></span>
+                           <span>Developed heap memory tracking tools at OSLabs Beta</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet"></span>
+                           <span>Created SMART Web Applications for educational use</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet"></span>
+                           <span>Applied modern technology stack to education solutions</span>
+                         </li>
+                       </ul>
+                     </div>
+                     <div>
+                       <h4 class="font-medium text-gray-800 mb-2">Educational Technology Integration</h4>
+                       <ul class="space-y-1 text-gray-700 text-sm">
+                         <li class="flex items-start">
+                           <span class="geometric-bullet" style="background: #10b981;"></span>
+                           <span>Integrated software tools into physics curriculum</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet" style="background: #10b981;"></span>
+                           <span>Enhanced data analysis capabilities in labs</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet" style="background: #10b981;"></span>
+                           <span>Created technology-enhanced assessment tools</span>
+                         </li>
+                       </ul>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </section>
 
-            {/* Reflection and Assessment */}
-            <section class="mb-8">
-              <h2 class="text-2xl font-semibold text-teal-600 mb-6 border-b-2 border-teal-100 pb-2">
-                Progress Monitoring and Reflection
-              </h2>
-              
-              <div class="bg-teal-50 p-6 rounded-lg">
-                <div class="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 class="font-semibold text-teal-700 mb-3">Quarterly Assessments</h3>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                      <li>• Platform development milestone reviews</li>
-                      <li>• User feedback analysis and integration</li>
-                      <li>• Student outcome data collection and analysis</li>
-                      <li>• Peer review sessions with fellow educators</li>
-                      <li>• Technical performance and scalability assessments</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 class="font-semibold text-teal-700 mb-3">Evidence Portfolio</h3>
-                    <ul class="space-y-2 text-gray-700 text-sm">
-                      <li>• Platform development documentation and code</li>
-                      <li>• Student engagement and achievement data</li>
-                      <li>• Educator testimonials and case studies</li>
-                      <li>• Conference presentations and publications</li>
-                      <li>• Technical innovation and patent applications</li>
-                    </ul>
-                  </div>
-                </div>
-                
-                <div class="mt-6 p-4 bg-white rounded border-l-4 border-teal-600">
-                  <h4 class="font-medium text-gray-800 mb-2">Commitment to Innovation in Education</h4>
-                  <p class="text-gray-700 text-sm">
-                    This professional growth plan represents my commitment to bridging the gap between cutting-edge technology and effective physics education. By leveraging my unique background in both domains, I aim to create solutions that not only enhance student learning but also empower fellow educators to embrace innovative teaching approaches. I will remain adaptable to emerging technologies and educational research while maintaining focus on the fundamental goal of inspiring students to think scientifically and pursue STEM careers.
-                  </p>
-                </div>
-              </div>
-            </section>
-          </div>
+             {/* Collaboration Example */}
+             <section>
+               <h2 class="text-2xl sm:text-3xl font-semibold heading-font text-purple-600 mb-6">
+                 Collaborative Professional Learning
+               </h2>
+               
+               <div class="modern-card p-6 sm:p-8 bg-purple-50/50">
+                 <h3 class="text-lg font-semibold text-purple-700 mb-4">
+                   Cross-Curricular AP Physics Curriculum Development
+                 </h3>
+                 <div class="grid sm:grid-cols-2 gap-6">
+                   <div>
+                     <h4 class="font-medium text-gray-800 mb-3">The Collaboration</h4>
+                     <p class="text-gray-700 text-sm mb-4">
+                       As Curriculum Planner for AP Physics at North Star Academy, I collaborated with Content Directors, Instructional Leaders, and diverse teachers to design engaging, rigorous, college-ready instruction.
+                     </p>
+                     
+                     <h4 class="font-medium text-gray-800 mb-3">My Contributions</h4>
+                     <ul class="space-y-1 text-gray-700 text-sm">
+                       <li class="flex items-start">
+                         <span class="geometric-bullet"></span>
+                         <span>Led physics content development and lab design</span>
+                       </li>
+                       <li class="flex items-start">
+                         <span class="geometric-bullet"></span>
+                         <span>Integrated educational technology solutions</span>
+                       </li>
+                     </ul>
+                   </div>
+                   
+                   <div>
+                     <h4 class="font-medium text-gray-800 mb-3">Professional Growth</h4>
+                     <ul class="space-y-2 text-gray-700 text-sm">
+                       <li class="flex items-start">
+                         <span class="geometric-bullet" style="background: #8b5cf6;"></span>
+                         <span><strong>Enhanced Leadership:</strong> Learned to facilitate diverse teams</span>
+                       </li>
+                       <li class="flex items-start">
+                         <span class="geometric-bullet" style="background: #8b5cf6;"></span>
+                         <span><strong>Improved Communication:</strong> Translate technical concepts effectively</span>
+                       </li>
+                       <li class="flex items-start">
+                         <span class="geometric-bullet" style="background: #8b5cf6;"></span>
+                         <span><strong>Data-Driven Decisions:</strong> Use student data to inform instruction</span>
+                       </li>
+                     </ul>
+                   </div>
+                 </div>
+               </div>
+             </section>
 
-          {/* Navigation */}
-          <div class="text-center py-8">
-            <div class="bg-gradient-to-r from-purple-600 to-pink-600 text-white p-8 rounded-lg">
-              <h2 class="text-2xl font-bold mb-4">Explore My Complete Portfolio</h2>
-              <p class="mb-6 opacity-90">
-                Discover how my professional growth plans align with my teaching philosophy and experience.
-              </p>
-              <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/philosophy" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                  Teaching Philosophy
-                </a>
-                <a href="/resume" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
-                  Professional Resume
-                </a>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </>
-  );
+             {/* Professional Goal */}
+             <section>
+               <h2 class="text-2xl sm:text-3xl font-semibold heading-font text-red-600 mb-6">
+                 Specific Professional Growth Goal
+               </h2>
+               
+               <div class="modern-card p-6 sm:p-8 bg-red-50/50">
+                 <div class="text-center mb-6">
+                   <h3 class="text-xl sm:text-2xl font-bold text-red-700 mb-2">
+                     Goal: Develop Comprehensive Educational Technology Platform for Physics Education
+                   </h3>
+                   <p class="text-gray-600 text-sm sm:text-base">
+                     Timeline: 3-year development and implementation plan
+                   </p>
+                 </div>
+                 
+                 <div class="grid sm:grid-cols-2 gap-6">
+                   <div>
+                     <h4 class="font-semibold text-red-700 mb-3">Why This Goal?</h4>
+                     <p class="text-gray-700 text-sm mb-4">
+                       Building on my unique combination of physics education expertise and software engineering skills, I aim to create a platform that revolutionizes how students interact with physics concepts.
+                     </p>
+                     
+                     <h4 class="font-semibold text-red-700 mb-3">Expected Outcomes</h4>
+                     <ul class="space-y-1 text-gray-700 text-sm">
+                       <li class="flex items-start">
+                         <span class="geometric-bullet"></span>
+                         <span>Enhanced student engagement in physics concepts</span>
+                       </li>
+                       <li class="flex items-start">
+                         <span class="geometric-bullet"></span>
+                         <span>Improved scientific thinking and data analysis skills</span>
+                       </li>
+                       <li class="flex items-start">
+                         <span class="geometric-bullet"></span>
+                         <span>Scalable solution for physics educators nationwide</span>
+                       </li>
+                     </ul>
+                   </div>
+                   
+                   <div>
+                     <h4 class="font-semibold text-red-700 mb-3">Success Indicators</h4>
+                     <ul class="space-y-1 text-gray-700 text-sm">
+                       <li class="flex items-start">
+                         <span class="geometric-bullet" style="background: #dc2626;"></span>
+                         <span>Platform adoption by 10+ educational institutions</span>
+                       </li>
+                       <li class="flex items-start">
+                         <span class="geometric-bullet" style="background: #dc2626;"></span>
+                         <span>Measurable improvement in student AP Physics scores</span>
+                       </li>
+                       <li class="flex items-start">
+                         <span class="geometric-bullet" style="background: #dc2626;"></span>
+                         <span>Recognition from physics education organizations</span>
+                       </li>
+                     </ul>
+                   </div>
+                 </div>
+               </div>
+             </section>
+
+             {/* Implementation Plan */}
+             <section>
+               <h2 class="text-2xl sm:text-3xl font-semibold heading-font text-indigo-600 mb-6">
+                 Goal Accomplishment Plan
+               </h2>
+               
+               <div class="space-y-6">
+                 <div class="modern-card p-6 sm:p-8 bg-indigo-50/50">
+                   <h3 class="text-lg font-semibold text-indigo-700 mb-4">Year 1: Foundation Development</h3>
+                   <div class="grid sm:grid-cols-2 gap-4">
+                     <div>
+                       <h4 class="font-medium text-gray-800 mb-2">Research & Planning</h4>
+                       <ul class="space-y-1 text-gray-700 text-sm">
+                         <li class="flex items-start">
+                           <span class="geometric-bullet"></span>
+                           <span>Conduct comprehensive needs assessment with physics educators</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet"></span>
+                           <span>Develop technical specifications and user requirements</span>
+                         </li>
+                       </ul>
+                     </div>
+                     <div>
+                       <h4 class="font-medium text-gray-800 mb-2">Technical Development</h4>
+                       <ul class="space-y-1 text-gray-700 text-sm">
+                         <li class="flex items-start">
+                           <span class="geometric-bullet" style="background: #6366f1;"></span>
+                           <span>Build core platform architecture</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet" style="background: #6366f1;"></span>
+                           <span>Develop interactive simulation modules</span>
+                         </li>
+                       </ul>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div class="modern-card p-6 sm:p-8 bg-indigo-50/50">
+                   <h3 class="text-lg font-semibold text-indigo-700 mb-4">Year 2-3: Implementation & Scale</h3>
+                   <div class="grid sm:grid-cols-2 gap-4">
+                     <div>
+                       <h4 class="font-medium text-gray-800 mb-2">Beta Testing & Refinement</h4>
+                       <ul class="space-y-1 text-gray-700 text-sm">
+                         <li class="flex items-start">
+                           <span class="geometric-bullet"></span>
+                           <span>Launch beta version with select physics classes</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet"></span>
+                           <span>Collect extensive user feedback and usage data</span>
+                         </li>
+                       </ul>
+                     </div>
+                     <div>
+                       <h4 class="font-medium text-gray-800 mb-2">Full Launch & Impact</h4>
+                       <ul class="space-y-1 text-gray-700 text-sm">
+                         <li class="flex items-start">
+                           <span class="geometric-bullet" style="background: #6366f1;"></span>
+                           <span>Full platform release to broader education community</span>
+                         </li>
+                         <li class="flex items-start">
+                           <span class="geometric-bullet" style="background: #6366f1;"></span>
+                           <span>Conduct comprehensive impact study on student outcomes</span>
+                         </li>
+                       </ul>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </section>
+
+           </div>
+
+           {/* Navigation */}
+           <div class="text-center py-8 sm:py-12 mt-12">
+             <div class="modern-card p-6 sm:p-10 bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+               <h2 class="text-2xl sm:text-3xl font-bold mb-4">Explore My Complete Portfolio</h2>
+               <p class="mb-6 opacity-90 text-base sm:text-lg">
+                 Discover how my professional growth plans align with my teaching philosophy and experience.
+               </p>
+               <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                 <a href="/philosophy" class="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                   Teaching Philosophy
+                 </a>
+                 <a href="/resume" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                   Professional Resume
+                 </a>
+               </div>
+             </div>
+           </div>
+         </div>
+       </main>
+
+       {/* Footer */}
+       <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200/50 py-8 sm:py-12 mt-16 sm:mt-24 content-layer">
+         <div class="container mx-auto px-4 sm:px-6 max-w-6xl text-center">
+           <div class="geometric-divider w-16 sm:w-24 mx-auto mb-4 sm:mb-6"></div>
+           <p class="text-gray-500 text-sm sm:text-base">
+             Built with Fresh & Deno • Inspired by Moroccan Geometric Patterns
+           </p>
+         </div>
+       </footer>
+     </div>
+   </>
+ );
 }
