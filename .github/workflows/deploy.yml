@@ -1,4 +1,4 @@
-yamlname: Deploy to Deno Deploy
+name: Deploy to Deno Deploy
 
 on:
   push:
@@ -10,19 +10,15 @@ jobs:
     permissions:
       id-token: write
       contents: read
-
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
-
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: "1.40.0"  # Use latest version
-
+          deno-version: "1.40.0"
       - name: Build step
         run: deno task build
-
       - name: Deploy to Deno Deploy
         uses: denoland/deployctl@v1
         with:
