@@ -6,7 +6,7 @@ import * as $growth_plan from "./routes/growth-plan.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $philosophy from "./routes/philosophy.tsx";
 import * as $resume from "./routes/resume.tsx";
-import * as $mobilemenu from "./islands/mobilemenu.tsx";
+import * as $MobileMenu from "./islands/MobileMenu.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -17,7 +17,7 @@ const manifest = {
     "./routes/resume.tsx": $resume,
   },
   islands: {
-    "./islands/mobilemenu.tsx": $mobilemenu,
+    "./islands/MobileMenu.tsx": $MobileMenu,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
