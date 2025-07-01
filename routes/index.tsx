@@ -1,4 +1,4 @@
-// routes/index.tsx - Modern Moroccan with Background Pattern & Fixed Mobile Menu
+// routes/index.tsx - Updated with Artifacts Route Promotion
 import { Head } from "$fresh/runtime.ts";
 import MobileMenu from "../islands/MobileMenu.tsx";
 
@@ -187,10 +187,11 @@ export default function Home() {
               
               {/* Desktop Navigation */}
               <nav class="hidden md:flex space-x-8">
-                <a href="/" class="text-blue-600 font-semibold px-3 py-2 border-b-2 border-blue-600">Home</a>
+                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Home</a>
                 <a href="/philosophy" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Philosophy</a>
                 <a href="/resume" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Resume</a>
                 <a href="/growth-plan" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Growth Plan</a>
+                <a href="/artifacts" class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors">Artifacts</a>
               </nav>
               
               {/* Mobile menu component */}
@@ -202,69 +203,86 @@ export default function Home() {
         {/* Main content */}
         <main class="container mx-auto px-4 sm:px-6 max-w-6xl content-layer">
           {/* Hero section - mobile optimized */}
-          <section class="text-center py-12 sm:py-20 mb-16 sm:mb-24">
-            <h1 class="hero-text text-4xl sm:text-6xl md:text-7xl font-bold heading-font text-gray-900 mb-6 sm:mb-8">
-              Professional Teaching Portfolio
-            </h1>
+          <section class="text-center py-12 sm:py-20 mb-4 sm:mb-6">
+                <h1 class="
+                  text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 
+                  font-bold heading-font 
+                  mb-6 sm:mb-8
+                  bg-gradient-to-r from-blue-600 to-emerald-500
+                  bg-clip-text text-transparent
+                  hover:scale-102 
+                  transition-transform duration-300
+                  cursor-pointer
+                  whitespace-nowrap
+                  text-center
+                  max-w-full
+                  hover:drop-shadow-md
+                ">
+                  Mohammed Sebbagh's Professional Portfolio
+                </h1>
             <p class="hero-subtext text-lg sm:text-2xl text-gray-600 mb-4 sm:mb-6 max-w-3xl mx-auto px-4">
               Physics Teacher & Educational Technology Developer
             </p>
-            <div class="geometric-divider w-48 sm:w-64 mx-auto mb-8 sm:mb-12"></div>
-            <p class="text-base sm:text-lg text-gray-500 mb-12 sm:mb-16 max-w-4xl mx-auto leading-relaxed px-4">
+            <div class="geometric-divider w-48 sm:w-64 mx-auto mb-6 sm:mb-8"></div>
+            <p class="text-base sm:text-lg text-gray-500 mb-4 sm:mb-6 max-w-4xl mx-auto leading-relaxed px-4">
               Dedicated to developing students' scientific thinking through interactive labs, 
               inquiry-based learning, and innovative technology integration
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center px-4">
-              <a href="/philosophy" class="bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-center">
-                Teaching Philosophy
-              </a>
-              <a href="/resume" class="border-2 border-blue-600 text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors text-center">
-                View Resume
-              </a>
-            </div>
           </section>
 
-          {/* Feature cards - mobile responsive grid */}
-          <section class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-24 px-4">
+          {/* Feature cards - Updated to include 4 cards */}
+          <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12 sm:mb-16 px-4">
             <div class="modern-card p-6 sm:p-8 rounded-xl text-center">
-              <div class="text-5xl sm:text-6xl mb-4 sm:mb-6">🔬</div>
-              <h3 class="text-xl sm:text-2xl font-semibold heading-font text-gray-900 mb-3 sm:mb-4">Physics Education</h3>
+              <div class="text-4xl sm:text-5xl mb-4 sm:mb-6">🔬</div>
+              <h3 class="text-lg sm:text-xl font-semibold heading-font text-gray-900 mb-3 sm:mb-4">Physics Education</h3>
               <div class="geometric-divider w-12 sm:w-16 mx-auto mb-4 sm:mb-6"></div>
-              <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                AP Physics and General Physics instruction with emphasis on inquiry-based learning and scientific discourse.
+              <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm">
+                AP Physics and General Physics instruction with inquiry-based learning.
               </p>
-              <a href="/philosophy" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+              <a href="/philosophy" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm">
                 Read More →
               </a>
             </div>
 
             <div class="modern-card p-6 sm:p-8 rounded-xl text-center">
-              <div class="text-5xl sm:text-6xl mb-4 sm:mb-6">💻</div>
-              <h3 class="text-xl sm:text-2xl font-semibold heading-font text-gray-900 mb-3 sm:mb-4">Educational Technology</h3>
+              <div class="text-4xl sm:text-5xl mb-4 sm:mb-6">💻</div>
+              <h3 class="text-lg sm:text-xl font-semibold heading-font text-gray-900 mb-3 sm:mb-4">Educational Technology</h3>
               <div class="geometric-divider w-12 sm:w-16 mx-auto mb-4 sm:mb-6"></div>
-              <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                Software engineering background with open-source educational tools and SMART Web Applications.
+              <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm">
+                Software engineering with educational tools and applications.
               </p>
-              <a href="/resume" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+              <a href="/resume" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm">
                 View Experience →
               </a>
             </div>
 
             <div class="modern-card p-6 sm:p-8 rounded-xl text-center">
-              <div class="text-5xl sm:text-6xl mb-4 sm:mb-6">🌱</div>
-              <h3 class="text-xl sm:text-2xl font-semibold heading-font text-gray-900 mb-3 sm:mb-4">Professional Growth</h3>
+              <div class="text-4xl sm:text-5xl mb-4 sm:mb-6">🌱</div>
+              <h3 class="text-lg sm:text-xl font-semibold heading-font text-gray-900 mb-3 sm:mb-4">Professional Growth</h3>
               <div class="geometric-divider w-12 sm:w-16 mx-auto mb-4 sm:mb-6"></div>
-              <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                Continuous development in curriculum design, leadership, and innovative teaching practices.
+              <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm">
+                Continuous development in curriculum design and leadership.
               </p>
-              <a href="/growth-plan" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+              <a href="/growth-plan" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm">
                 Learn More →
+              </a>
+            </div>
+
+            <div class="modern-card p-6 sm:p-8 rounded-xl text-center">
+              <div class="text-4xl sm:text-5xl mb-4 sm:mb-6">📚</div>
+              <h3 class="text-lg sm:text-xl font-semibold heading-font text-gray-900 mb-3 sm:mb-4">Teaching Artifacts</h3>
+              <div class="geometric-divider w-12 sm:w-16 mx-auto mb-4 sm:mb-6"></div>
+              <p class="text-gray-600 mb-6 sm:mb-8 leading-relaxed text-sm">
+                Lesson plans, assessments, and competency demonstrations.
+              </p>
+              <a href="/artifacts" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors text-sm">
+                Explore Artifacts →
               </a>
             </div>
           </section>
 
           {/* Professional highlights - mobile optimized */}
-          <section class="modern-card p-6 sm:p-12 rounded-2xl mx-4">
+          <section class="modern-card p-6 sm:p-12 rounded-2xl mx-4 mb-12 sm:mb-16">
             <div class="text-center mb-12 sm:mb-16">
               <h2 class="text-3xl sm:text-4xl font-bold heading-font text-gray-900 mb-4">Professional Highlights</h2>
               <div class="geometric-divider w-24 sm:w-32 mx-auto"></div>
@@ -316,15 +334,59 @@ export default function Home() {
               </div>
             </div>
           </section>
+
+          {/* Portfolio Navigation Section */}
+          <section class="mt-8 sm:mt-12 px-4">
+            <div class="modern-card p-8 sm:p-12 rounded-2xl bg-gradient-to-r from-blue-50 to-green-50">
+              <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold heading-font text-gray-900 mb-4">Explore My Portfolio</h2>
+                <div class="geometric-divider w-24 mx-auto mb-6"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                  Discover my comprehensive approach to physics education, professional development, and innovative teaching practices.
+                </p>
+              </div>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <a href="/philosophy" class="bg-white p-6 rounded-lg text-center hover:shadow-lg transition-all duration-300 group">
+                  <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">🎓</div>
+                  <h3 class="font-semibold text-gray-900 mb-2">Teaching Philosophy</h3>
+                  <p class="text-sm text-gray-600">Educational beliefs and approaches</p>
+                </a>
+                
+                <a href="/resume" class="bg-white p-6 rounded-lg text-center hover:shadow-lg transition-all duration-300 group">
+                  <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">📄</div>
+                  <h3 class="font-semibold text-gray-900 mb-2">Professional Resume</h3>
+                  <p class="text-sm text-gray-600">Experience and qualifications</p>
+                </a>
+                
+                <a href="/growth-plan" class="bg-white p-6 rounded-lg text-center hover:shadow-lg transition-all duration-300 group">
+                  <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">📈</div>
+                  <h3 class="font-semibold text-gray-900 mb-2">Growth Plan</h3>
+                  <p class="text-sm text-gray-600">Professional development goals</p>
+                </a>
+                
+                <a href="/artifacts" class="bg-white p-6 rounded-lg text-center hover:shadow-lg transition-all duration-300 group">
+                  <div class="text-3xl mb-4 group-hover:scale-110 transition-transform">🛠️</div>
+                  <h3 class="font-semibold text-gray-900 mb-2">Teaching Artifacts</h3>
+                  <p class="text-sm text-gray-600">Lesson plans and assessments</p>
+                </a>
+              </div>
+            </div>
+          </section>
         </main>
 
         {/* Mobile-friendly footer */}
-        <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200/50 py-8 sm:py-12 mt-16 sm:mt-24 content-layer">
+        <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200/50 py-8 sm:py-12 mt-16 sm:mt-24 content-layer no-print">
           <div class="container mx-auto px-4 sm:px-6 max-w-6xl text-center">
             <div class="geometric-divider w-16 sm:w-24 mx-auto mb-4 sm:mb-6"></div>
-            <p class="text-gray-500 text-sm sm:text-base">
-              Built with Fresh & Deno • Inspired by Moroccan Geometric Patterns
-            </p>
+            <div class="space-y-2">
+              <p class="text-gray-500 text-sm sm:text-base font-medium">
+                &copy; 2025 Mohammed Sebbagh | Professional Teaching Portfolio
+              </p>
+              <p class="text-gray-400 text-xs sm:text-sm italic">
+                Dedicated to fostering scientific literacy, critical thinking, and lifelong learning in all students
+              </p>
+            </div>
           </div>
         </footer>
       </div>
