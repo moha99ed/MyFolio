@@ -1,25 +1,14 @@
 {
-  "build_id": "58ff76aeb28a83097f4000883170cb8bed99faeb",
+  "build_id": "523ea7ff6fc0cd7eec847c9d64ffcda1c8ea2913",
   "files": {
     "main.js": [
-      "chunk-GI7LLYGM.js",
-      "chunk-JP5XG2OT.js"
+      "chunk-KYP6ZK7R.js"
     ],
     "deserializer.js": [],
-    "signals.js": [
-      "chunk-GI7LLYGM.js",
-      "chunk-GPMBDFQC.js",
-      "chunk-JP5XG2OT.js"
-    ],
-    "chunk-GI7LLYGM.js": [],
     "island-mobilemenu.js": [
-      "chunk-GPMBDFQC.js",
-      "chunk-JP5XG2OT.js"
+      "chunk-KYP6ZK7R.js"
     ],
-    "chunk-GPMBDFQC.js": [
-      "chunk-JP5XG2OT.js"
-    ],
-    "chunk-JP5XG2OT.js": [],
+    "chunk-KYP6ZK7R.js": [],
     "metafile.json": []
   }
 }

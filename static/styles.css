@@ -1,3 +1,508 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* static/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Moroccan pattern background */
+.moroccan-bg {
+  background-image: url('/moroccan-pattern.png');
+  background-size: 300px 300px;
+  background-repeat: repeat;
+  position: relative;
+}
+
+.moroccan-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 250, 252, 0.95);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure content is above the overlay */
+.content-layer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Modern color palette */
+:root {
+  --moroccan-blue: #3b82f6;
+  --moroccan-teal: #06b6d4;
+  --moroccan-sage: #10b981;
+  --moroccan-gold: #f59e0b;
+  --moroccan-coral: #f97316;
+}
+
+/* Mobile menu animations */
+.mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+/* Hamburger menu animation */
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(0);
+  transition: all 0.3s ease;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.hamburger.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.hamburger.open .hamburger-middle {
+  opacity: 0;
+}
+
+.hamburger.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translateX(-6px);
+}
+
+/* Modern card styling */
+.modern-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Typography */
+.heading-font { 
+  font-family: 'Playfair Display', serif; 
+}
+
+.body-font { 
+  font-family: 'Inter', sans-serif; 
+}
+
+/* Geometric accents */
+.geometric-divider {
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(59, 130, 246, 0.3) 20%,
+    rgba(245, 158, 11, 0.5) 50%,
+    rgba(59, 130, 246, 0.3) 80%,
+    transparent 100%
+  );
+  position: relative;
+}
+
+.geometric-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: var(--moroccan-gold);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.geometric-bullet {
+  width: 6px;
+  height: 6px;
+  background: var(--moroccan-blue);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  margin-right: 12px;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.geometric-bullet.teal { background: var(--moroccan-teal); }
+.geometric-bullet.sage { background: var(--moroccan-sage); }
+.geometric-bullet.gold { background: var(--moroccan-gold); }
+.geometric-bullet.coral { background: var(--moroccan-coral); }
+
+/* Artifact specific styles */
+.artifact-number {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin: 0 auto 1rem auto;
+}
+
+.competency-badge {
+  display: inline-block;
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e40af;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 0.125rem;
+}
+
+.download-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.matrix-table {
+  background: rgba(255, 255, 255, 0.9);
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.matrix-table th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+}
+
+.matrix-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+  vertical-align: top;
+}
+
+.matrix-table tr:hover {
+  background: rgba(248, 250, 252, 0.5);
+}
+
+.checkmark {
+  color: #10b981;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .hero-text { font-size: 2.5rem; }
+  .hero-subtext { font-size: 1.25rem; }
+  .section-padding { padding: 2rem 1rem; }
+}
+
+/* Print styles */
+@media print {
+  .no-print { 
+    display: none !important; 
+  }
+  .modern-card { 
+    background: white !important; 
+    box-shadow: none !important; 
+  }
+  .moroccan-bg::before { 
+    display: none !important; 
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* Moroccan pattern background */
+.moroccan-bg {
+  background-image: url('/moroccan-pattern.png');
+  background-size: 300px 300px;
+  background-repeat: repeat;
+  position: relative;
+}
+
+.moroccan-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(248, 250, 252, 0.95);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.content-layer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  transform: translateX(-100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.mobile-menu.open {
+  transform: translateX(0);
+}
+
+.hamburger {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: currentColor;
+  transform: rotate(0);
+  transition: all 0.3s ease;
+}
+
+.hamburger-middle {
+  transform: translateY(7px);
+}
+
+.hamburger-bottom {
+  transform: translateY(14px);
+}
+
+.hamburger.open .hamburger-top {
+  transform: rotate(45deg) translateY(6px) translateX(6px);
+}
+
+.hamburger.open .hamburger-middle {
+  opacity: 0;
+}
+
+.hamburger.open .hamburger-bottom {
+  transform: rotate(-45deg) translateY(6px) translateX(-6px);
+}
+
+/* Modern card styling */
+.modern-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.modern-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Typography */
+.heading-font { font-family: 'Playfair Display', serif; }
+.body-font { font-family: 'Inter', sans-serif; }
+
+/* Geometric accents */
+.geometric-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(59, 130, 246, 0.3) 20%, 
+    rgba(245, 158, 11, 0.5) 50%, 
+    rgba(59, 130, 246, 0.3) 80%, 
+    transparent 100%
+  );
+  position: relative;
+}
+
+.geometric-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  background: #f59e0b;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+
+          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+          
+          .moroccan-bg {
+            background-image: url('/moroccan-pattern.png');
+            background-size: 300px 300px;
+            background-repeat: repeat;
+            position: relative;
+          }
+          
+          .moroccan-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248, 250, 252, 0.95);
+            pointer-events: none;
+            z-index: 1;
+          }
+          
+          .content-layer {
+            position: relative;
+            z-index: 2;
+          }
+          
+          .mobile-menu {
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          }
+          
+          .mobile-menu.open {
+            transform: translateX(0);
+          }
+          
+          .hamburger {
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+            transition: all 0.25s;
+            position: relative;
+          }
+          
+          .hamburger-top,
+          .hamburger-middle,
+          .hamburger-bottom {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: currentColor;
+            transform: rotate(0);
+            transition: all 0.3s ease;
+          }
+          
+          .hamburger-middle {
+            transform: translateY(7px);
+          }
+          
+          .hamburger-bottom {
+            transform: translateY(14px);
+          }
+          
+          .hamburger.open .hamburger-top {
+            transform: rotate(45deg) translateY(6px) translateX(6px);
+          }
+          
+          .hamburger.open .hamburger-middle {
+            opacity: 0;
+          }
+          
+          .hamburger.open .hamburger-bottom {
+            transform: rotate(-45deg) translateY(6px) translateX(-6px);
+          }
+          
+          .modern-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+              0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+          }
+          
+          .modern-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+              0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -2px rgba(0, 0, 0, 0.05);
+          }
+          
+          .heading-font { font-family: 'Playfair Display', serif; }
+          .body-font { font-family: 'Inter', sans-serif; }
+          
+          .geometric-divider {
+            height: 2px;
+            background: linear-gradient(90deg, 
+              transparent 0%, 
+              rgba(59, 130, 246, 0.3) 20%, 
+              rgba(245, 158, 11, 0.5) 50%, 
+              rgba(59, 130, 246, 0.3) 80%, 
+              transparent 100%
+            );
+            position: relative;
+          }
+          
+          .geometric-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background: #f59e0b;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+          }
+          
+          .geometric-bullet {
+            width: 6px;
+            height: 6px;
+            background: #3b82f6;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            margin-right: 12px;
+            flex-shrink: 0;
+            margin-top: 8px;
+          }
+          
+          @media print {
+            .no-print { display: none !important; }
+            .modern-card { background: white !important; box-shadow: none !important; }
+            .moroccan-bg::before { display: none !important; }
+          }
