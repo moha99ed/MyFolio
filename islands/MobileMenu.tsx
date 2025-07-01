@@ -101,7 +101,7 @@ export default function MobileMenu() {
              </a>
              <a 
                href="/resume" 
-               class="text-2xl font-medium text-gray-700 hover:text-blue-600 py-4 px-6 bg-white bg-opacity-70 rounded-xl shadow-lg text-center transition-colors" 
+               class="text-xl font-medium text-gray-700 hover:text-blue-600 py-4 px-6 bg-white bg-opacity-70 rounded-xl shadow-lg text-center transition-colors" 
                onClick={closeMenu}
              >
                Resume
@@ -115,7 +115,7 @@ export default function MobileMenu() {
              </a>
              <a 
                 href="/artifacts" 
-                class="text-gray-600 hover:text-blue-600 font-medium px-3 py-2 transition-colors"
+                class="text-xl font-medium text-gray-700 hover:text-blue-600 py-4 px-6 bg-white bg-opacity-70 rounded-xl shadow-lg text-center transition-colors"
                 onClick={closeMenu}
                 >
               Artifacts
