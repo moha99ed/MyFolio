@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Differentiated Motion Assessment</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: white;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28pt;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .header .subtitle {
+            font-size: 14pt;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .header .info {
+            font-size: 10pt;
+            font-style: italic;
+        }
+        
+        .competency-badges {
+            margin-top: 15px;
+        }
+        
+        .competency-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 9pt;
+            font-weight: 500;
+            margin: 0 5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .section {
+            margin-bottom: 25px;
+            page-break-inside: avoid;
+        }
+        
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #2c3e50;
+            font-size: 16pt;
+            margin-bottom: 12px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .section h3 {
+            font-family: 'Playfair Display', serif;
+            color: #34495e;
+            font-size: 14pt;
+            margin: 15px 0 8px 0;
+        }
+        
+        .section h4 {
+            color: #555;
+            font-size: 12pt;
+            margin: 12px 0 6px 0;
+            font-weight: 600;
+        }
+        
+        .section p {
+            margin-bottom: 8px;
+            font-size: 10pt;
+        }
+        
+        .tier-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+        
+        .tier {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            font-size: 9pt;
+        }
+        
+        .tier.tier-1 { border-left-color: #27ae60; }
+        .tier.tier-2 { border-left-color: #3498db; }
+        .tier.tier-3 { border-left-color: #e74c3c; }
+        
+        .tier h4 {
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+            font-size: 11pt;
+        }
+        
+        .tier h5 {
+            color: #2c3e50;
+            font-size: 10pt;
+            margin: 10px 0 5px 0;
+            font-weight: 600;
+        }
+        
+        .tier ul {
+            margin: 5px 0;
+            padding-left: 15px;
+        }
+        
+        .tier li {
+            margin-bottom: 3px;
+            font-size: 9pt;
+        }
+        
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .vocab-card {
+            background: #ecf0f1;
+            border-radius: 4px;
+            padding: 12px;
+            border-left: 3px solid #3498db;
+            font-size: 9pt;
+        }
+        
+        .vocab-term {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 4px;
+            font-size: 10pt;
+        }
+        
+        .vocab-definition {
+            color: #555;
+            font-size: 9pt;
+        }
+        
+        .assessment-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 9pt;
+            page-break-inside: avoid;
+        }
+        
+        .assessment-table th {
+            background: #34495e;
+            color: white;
+            padding: 8px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 10pt;
+        }
+        
+        .assessment-table td {
+            padding: 8px;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: top;
+        }
+        
+        .language-support {
+            background: #e8f4f8;
+            border-radius: 4px;
+            padding: 12px;
+            margin: 12px 0;
+            border-left: 3px solid #3498db;
+            font-size: 9pt;
+        }
+        
+        .language-support h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 11pt;
+        }
+        
+        .differentiation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .diff-card {
+            background: white;
+            border-radius: 4px;
+            padding: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-top: 3px solid #3498db;
+            font-size: 9pt;
+        }
+        
+        .diff-card h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 11pt;
+        }
+        
+        .diff-card ul {
+            margin: 0;
+            padding-left: 15px;
+        }
+        
+        .diff-card li {
+            margin-bottom: 4px;
+            color: #555;
+        }
+        
+        .highlight {
+            background: #3498db;
+            color: white;
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-weight: 500;
+            font-size: 8pt;
+        }
+        
+        .example-box {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 4px;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 9pt;
+            page-break-inside: avoid;
+        }
+        
+        .example-box h5 {
+            color: #856404;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 10pt;
+        }
+        
+        .objectives-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4px;
+            margin: 10px 0;
+        }
+        
+        .objective-item {
+            font-size: 10pt;
+            color: #555;
+            padding: 3px 0;
+        }
+        
+        .representation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .representation-item {
+            background: #ecf0f1;
+            padding: 8px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 9pt;
+        }
+        
+        .representation-item strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #2c3e50;
+            font-size: 10pt;
+        }
+        
+        /* Print optimizations */
+        @media print {
+            body {
+                max-width: none;
+                margin: 0;
+                padding: 0.5in;
+            }
+            
+            .header {
+                background: #667eea !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .tier, .vocab-card, .diff-card, .example-box {
+                page-break-inside: avoid;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+            }
+        }
+        
+        @page {
+            margin: 0.5in;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Differentiated Motion Assessment</h1>
+        <p class="subtitle">Academic Language & Differentiation Strategies</p>
+        <p class="info">Mohammed Sebbagh • Physics Teacher • Professional Teaching Portfolio</p>
+        <div class="competency-badges">
+            <span class="competency-badge">Academic Language Development</span>
+            <span class="competency-badge">Differentiated Instruction</span>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Assessment Overview</h2>
+        <p>This multi-tiered assessment provides multiple pathways for students to demonstrate understanding of motion concepts while supporting diverse learners through academic language scaffolds and varied representation options. The assessment design ensures all students can access physics content while building essential scientific communication skills.</p>
+    </div>
+    
+    <div class="section">
+        <h2>Learning Objectives Assessed</h2>
+        <div class="objectives-list">
+            <div class="objective-item">• Position-time and velocity-time graph interpretation</div>
+            <div class="objective-item">• Kinematic equation applications and problem-solving</div>
+            <div class="objective-item">• Experimental design and data analysis</div>
+            <div class="objective-item">• Scientific claims evaluation and evidence-based reasoning</div>
+            <div class="objective-item">• Reference frames and relative motion concepts</div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Academic Language Focus</h2>
+        <p>Students must correctly use and define key physics terminology while demonstrating understanding through multiple communication modes:</p>
+        
+        <div class="vocabulary-grid">
+            <div class="vocab-card">
+                <div class="vocab-term">Position</div>
+                <div class="vocab-definition">Location of an object relative to a reference point, measured as a vector quantity</div>
+            </div>
+            <div class="vocab-card">
+                <div class="vocab-term">Velocity</div>
+                <div class="vocab-definition">Rate of change of position with respect to time (vector quantity including direction)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="vocab-term">Acceleration</div>
+                <div class="vocab-definition">Rate of change of velocity with respect to time, indicating how motion changes</div>
+            </div>
+            <div class="vocab-card">
+                <div class="vocab-term">Displacement</div>
+                <div class="vocab-definition">Change in position from initial to final location (vector quantity)</div>
+            </div>
+            <div class="vocab-card">
+                <div class="vocab-term">Uniform Motion</div>
+                <div class="vocab-definition">Motion with constant velocity, resulting in zero acceleration</div>
+            </div>
+            <div class="vocab-card">
+                <div class="vocab-term">Reference Frame</div>
+                <div class="vocab-definition">The coordinate system from which motion is observed and measured</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Three-Tier Assessment Structure</h2>
+        
+        <div class="tier-container">
+            <div class="tier tier-1">
+                <h4>Tier 1: Foundational Level</h4>
+                <p><em>For students needing additional support or ELL students</em></p>
+                
+                <h5>Section A: Graph Interpretation (30 points)</h5>
+                <ul>
+                    <li>Multiple choice with visual graph supports</li>
+                    <li>Academic Language Frame: "This graph shows _____ motion because _____"</li>
+                    <li>Color-coded sections showing different motion types</li>
+                </ul>
+                
+                <h5>Section B: Basic Calculations (20 points)</h5>
+                <ul>
+                    <li>Simple kinematic problems with step-by-step templates</li>
+                    <li>Formulas provided: v = at, d = ½at²</li>
+                    <li>Unit guidance included</li>
+                </ul>
+            </div>
+            
+            <div class="tier tier-2">
+                <h4>Tier 2: Standard Level</h4>
+                <p><em>For students meeting grade-level expectations</em></p>
+                
+                <h5>Section A: Graph Analysis (35 points)</h5>
+                <ul>
+                    <li>Determine equations from graphical data</li>
+                    <li>Choose between linear and quadratic relationships</li>
+                    <li>Explain reasoning using scientific vocabulary</li>
+                </ul>
+                
+                <h5>Section B: Problem-Solving (25 points)</h5>
+                <ul>
+                    <li>Multi-step kinematic equation problems</li>
+                    <li>Real-world scenarios requiring equation selection</li>
+                    <li>Justify equation choice with scientific reasoning</li>
+                </ul>
+                
+                <h5>Section C: Experimental Analysis (20 points)</h5>
+                <ul>
+                    <li>Analyze provided experimental data</li>
+                    <li>Calculate accelerations from measurements</li>
+                    <li>Draw evidence-based conclusions</li>
+                </ul>
+            </div>
+            
+            <div class="tier tier-3">
+                <h4>Tier 3: Advanced Level</h4>
+                <p><em>For gifted students or those ready for extensions</em></p>
+                
+                <h5>Section A: Complex Analysis (40 points)</h5>
+                <ul>
+                    <li>Multi-perspective motion analysis</li>
+                    <li>Analyze pseudoscientific claims</li>
+                    <li>Distinguish scientific from non-scientific assertions</li>
+                </ul>
+                
+                <h5>Section B: Extended Response (30 points)</h5>
+                <ul>
+                    <li>Create investigations to test motion hypotheses</li>
+                    <li>Interpret complex experimental results</li>
+                    <li>Present findings using academic language</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Differentiation Strategies</h2>
+        
+        <div class="differentiation-grid">
+            <div class="diff-card">
+                <h4>English Language Learners (ELL)</h4>
+                <ul>
+                    <li><span class="highlight">Bilingual vocabulary sheets</span> with physics terms in native language</li>
+                    <li><span class="highlight">Sentence frames</span> for scientific explanations</li>
+                    <li><span class="highlight">Extended time</span>: Additional 50% time for completion</li>
+                    <li><span class="highlight">Visual supports</span> with diagrams and graphs</li>
+                </ul>
+            </div>
+            
+            <div class="diff-card">
+                <h4>Students with Learning Disabilities</h4>
+                <ul>
+                    <li><span class="highlight">Chunked sections</span> with manageable parts and breaks</li>
+                    <li><span class="highlight">Graphic organizers</span> for problem-solving</li>
+                    <li><span class="highlight">Alternative formats</span>: Oral responses for written sections</li>
+                    <li><span class="highlight">Assistive technology</span>: Calculator use, speech-to-text</li>
+                </ul>
+            </div>
+            
+            <div class="diff-card">
+                <h4>Gifted and Talented Students</h4>
+                <ul>
+                    <li><span class="highlight">Open-ended extensions</span>: Research real-world applications</li>
+                    <li><span class="highlight">Cross-curricular connections</span>: Mathematical modeling</li>
+                    <li><span class="highlight">Peer teaching</span> opportunities</li>
+                    <li><span class="highlight">Independent investigations</span>: Original experiments</li>
+                </ul>
+            </div>
+            
+            <div class="diff-card">
+                <h4>Students with Special Needs</h4>
+                <ul>
+                    <li><span class="highlight">Modified expectations</span> maintaining conceptual focus</li>
+                    <li><span class="highlight">Sensory accommodations</span>: Quiet testing environment</li>
+                    <li><span class="highlight">Physical accommodations</span>: Large print, extended breaks</li>
+                    <li><span class="highlight">Communication supports</span>: Visual schedules</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Academic Language Scaffolds</h2>
+        
+        <div class="language-support">
+            <h4>Sentence Frames for Scientific Explanations</h4>
+            <ul>
+                <li>"The graph shows _____ because _____"</li>
+                <li>"Based on the experimental data, I conclude that _____"</li>
+                <li>"The relationship between _____ and _____ is _____ because _____"</li>
+                <li>"I can calculate _____ using the equation _____"</li>
+            </ul>
+        </div>
+        
+        <div class="language-support">
+            <h4>Mathematical Communication Requirements</h4>
+            <ul>
+                <li>Show all work with proper units and labels</li>
+                <li>Explain equation selection with scientific reasoning</li>
+                <li>Use precise scientific vocabulary in explanations</li>
+                <li>Connect mathematical results to physical meaning</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Sample Questions by Tier</h2>
+        
+        <div class="example-box">
+            <h5>Tier 1 Example: Foundational Level</h5>
+            <p><strong>Question:</strong> "Look at the velocity-time graph below. When does the object have zero acceleration?"</p>
+            <ul>
+                <li>Multiple choice format with clear visual support</li>
+                <li>Academic language frame: "Zero acceleration occurs when _____"</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <h5>Tier 2 Example: Standard Level</h5>
+            <p><strong>Question:</strong> "An elevator's motion is shown in the velocity-time graph. Calculate the displacement during the first 6 seconds and explain your method using scientific vocabulary."</p>
+            <ul>
+                <li>Requires mathematical calculation and scientific explanation</li>
+                <li>Academic language expected in detailed explanation</li>
+            </ul>
+        </div>
+        
+        <div class="example-box">
+            <h5>Tier 3 Example: Advanced Level</h5>
+            <p><strong>Question:</strong> "Evaluate this claim: 'Heavy objects fall faster than light objects.' Design an experiment to test this hypothesis and use evidence to support or refute this statement."</p>
+            <ul>
+                <li>Requires critical analysis and evidence-based argumentation</li>
+                <li>Advanced academic language and scientific communication skills</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="section">
+        <h2>Assessment Rubric</h2>
+        
+        <table class="assessment-table">
+            <thead>
+                <tr>
+                    <th>Level</th>
+                    <th>Academic Language Use (30%)</th>
+                    <th>Content Understanding (70%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>4 - Exemplary</strong></td>
+                    <td>Consistently uses precise scientific vocabulary with clear explanations and proper grammar</td>
+                    <td>Demonstrates complete mastery of motion concepts with accurate problem-solving</td>
+                </tr>
+                <tr>
+                    <td><strong>3 - Proficient</strong></td>
+                    <td>Generally uses appropriate scientific vocabulary with minor language errors</td>
+                    <td>Shows solid understanding with mostly correct applications</td>
+                </tr>
+                <tr>
+                    <td><strong>2 - Developing</strong></td>
+                    <td>Basic vocabulary use with some scientific terms, needs language support</td>
+                    <td>Demonstrates partial understanding with some misconceptions</td>
+                </tr>
+                <tr>
+                    <td><strong>1 - Beginning</strong></td>
+                    <td>Limited vocabulary use, requires significant language scaffolding</td>
+                    <td>Shows minimal understanding, needs extensive support</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="section">
+        <h2>Multiple Representation Options</h2>
+        <p>Students can demonstrate understanding through diverse modalities:</p>
+        
+        <div class="representation-grid">
+            <div class="representation-item">
+                <strong>Mathematical Calculations</strong>
+                <small>Step-by-step problem solving</small>
+            </div>
+            <div class="representation-item">
+                <strong>Graphical Analysis</strong>
+                <small>Motion graph interpretation</small>
+            </div>
+            <div class="representation-item">
+                <strong>Written Explanations</strong>
+                <small>Academic language use</small>
+            </div>
+            <div class="representation-item">
+                <strong>Experimental Design</strong>
+                <small>Scientific method application</small>
+            </div>
+            <div class="representation-item">
+                <strong>Visual Diagrams</strong>
+                <small>Scientific illustrations</small>
+            </div>
+            <div class="representation-item">
+                <strong>Oral Presentations</strong>
+                <small>Recorded for assessment</small>
+            </div>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 6px; font-size: 9pt; color: #555;">
+        <p><strong>FERPA Compliance:</strong> This assessment artifact has been created for portfolio purposes. All student examples are fictional and no actual student data is included.</p>
+        <p style="margin-top: 8px;"><em>This differentiated assessment ensures all students can demonstrate motion understanding while building academic language skills essential for continued success in physics and STEM fields.</em></p>
+    </div>
+</body>
+</html>

@@ -8,7 +8,11 @@ import * as $growth_plan from "./routes/growth-plan.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $philosophy from "./routes/philosophy.tsx";
 import * as $resume from "./routes/resume.tsx";
+import * as $ArtifactModal from "./islands/ArtifactModal.tsx";
+import * as $BuggyInvestigationWorksheet from "./islands/BuggyInvestigationWorksheet.tsx";
+import * as $GoogleSheetsTutorial from "./islands/GoogleSheetsTutorial.tsx";
 import * as $MobileMenu from "./islands/MobileMenu.tsx";
+import * as $PdfModal from "./islands/PdfModal.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -21,7 +25,11 @@ const manifest = {
     "./routes/resume.tsx": $resume,
   },
   islands: {
+    "./islands/ArtifactModal.tsx": $ArtifactModal,
+    "./islands/BuggyInvestigationWorksheet.tsx": $BuggyInvestigationWorksheet,
+    "./islands/GoogleSheetsTutorial.tsx": $GoogleSheetsTutorial,
     "./islands/MobileMenu.tsx": $MobileMenu,
+    "./islands/PdfModal.tsx": $PdfModal,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
