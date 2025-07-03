@@ -121,7 +121,7 @@ export default function Home() {
               </li>
               <li class="flex items-start">
                 <div class="geometric-bullet gold"></div>
-                <span class="text-gray-700 text-sm sm:text-base">SMART Web Application creator</span>
+                <span class="text-gray-700 text-sm sm:text-base">Created grade management tools streamlining teacher workflows</span>
               </li>
             </ul>
           </div>

@@ -27,6 +27,7 @@ export default function Layout({ title, description, children, currentPath = "" 
                 <p class="text-sm text-gray-600 hidden sm:block">
                   Physics Teacher & Educational Technology Developer
                 </p>
+                <p class="text-sm text-gray-600 hidden sm:block">Submitted: 06/27/2025</p>
               </div>
 
               {/* Desktop Navigation */}
