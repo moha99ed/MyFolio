@@ -1,14 +1,39 @@
 {
-  "build_id": "5d08f1c1ae13c1116782814378e12f68d8787151",
+  "build_id": "5426e18dfdaf870fb6aae4547d029fb960694505",
   "files": {
     "main.js": [
-      "chunk-KYP6ZK7R.js"
+      "chunk-F67JBPXJ.js"
     ],
     "deserializer.js": [],
-    "island-mobilemenu.js": [
-      "chunk-KYP6ZK7R.js"
+    "island-artifactmodal.js": [
+      "chunk-LBTWPFPW.js",
+      "chunk-LF3BN6YR.js",
+      "chunk-F67JBPXJ.js"
     ],
-    "chunk-KYP6ZK7R.js": [],
+    "island-buggyinvestigationworksheet.js": [
+      "chunk-LF3BN6YR.js",
+      "chunk-F67JBPXJ.js"
+    ],
+    "island-googlesheetstutorial.js": [
+      "chunk-LF3BN6YR.js",
+      "chunk-F67JBPXJ.js"
+    ],
+    "island-mobilemenu.js": [
+      "chunk-LF3BN6YR.js",
+      "chunk-F67JBPXJ.js"
+    ],
+    "island-pdfmodal.js": [
+      "chunk-LBTWPFPW.js",
+      "chunk-LF3BN6YR.js",
+      "chunk-F67JBPXJ.js"
+    ],
+    "chunk-LBTWPFPW.js": [
+      "chunk-F67JBPXJ.js"
+    ],
+    "chunk-LF3BN6YR.js": [
+      "chunk-F67JBPXJ.js"
+    ],
+    "chunk-F67JBPXJ.js": [],
     "metafile.json": []
   }
 }
