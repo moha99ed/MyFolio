@@ -261,21 +261,6 @@ export default function GrowthPlan() {
             </div>
           </div>
         </main>
-
-        {/* Footer */}
-        <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200/50 py-8 sm:py-12 mt-16 sm:mt-24 content-layer no-print">
-          <div class="container mx-auto px-4 sm:px-6 max-w-6xl text-center">
-            <div class="geometric-divider w-16 sm:w-24 mx-auto mb-4 sm:mb-6"></div>
-            <div class="space-y-2">
-              <p class="text-gray-500 text-sm sm:text-base font-medium">
-                &copy; 2025 Mohammed Sebbagh | Professional Teaching Portfolio
-              </p>
-              <p class="text-gray-400 text-xs sm:text-sm italic">
-                Dedicated to fostering scientific literacy, critical thinking, and lifelong learning in all students
-              </p>
-            </div>
-          </div>
-        </footer>
       </div>
     </>
     </Layout>

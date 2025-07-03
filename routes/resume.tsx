@@ -1,6 +1,8 @@
 import { Head } from "$fresh/runtime.ts";
 import MobileMenu from "../islands/MobileMenu.tsx";
 import Layout from "../components/Layout.tsx";
+import { FullScreenPdfModal } from "../islands/PdfModal.tsx";
+
 
 export default function Resume() {
   return (
@@ -17,6 +19,7 @@ export default function Resume() {
           <div class="modern-card rounded-2xl p-6 sm:p-12">
             
             {/* Header */}
+        
             <div class="text-center mb-8">
               <h1 class="text-3xl sm:text-5xl font-bold heading-font text-gray-900 mb-2">Mohammed Sebbagh</h1>
               <div class="geometric-divider w-32 sm:w-48 mx-auto mb-4"></div>
@@ -25,20 +28,20 @@ export default function Resume() {
                 <span>201-898-6407</span>
                 <span>mohammedsebbagh@gmail.com</span>
               </div>
-              
               {/* PDF Download Button */}
               <div class="mb-8">
-                <a 
-                  href="/Mohammed_Sebbagh_Resume.pdf" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                  </svg>
-                  View Resume PDF
-                </a>
+                  <FullScreenPdfModal 
+                    title="Resume PDF" 
+                    pdfUrl="/Mohammed_Sebbagh_Resume.pdf" 
+                  >
+                    <button class="download-btn text-white px-6 py-2 rounded-lg font-semibold inline-flex items-center gap-2 text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        View Resume PDF
+                      </button>
+                      </FullScreenPdfModal>
               </div>
             </div>
 
@@ -258,21 +261,6 @@ export default function Resume() {
             </div>
           </div>
         </main>
-
-        {/* Footer */}
-        <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200/50 py-8 sm:py-12 mt-16 sm:mt-24 content-layer no-print">
-          <div class="container mx-auto px-4 sm:px-6 max-w-6xl text-center">
-            <div class="geometric-divider w-16 sm:w-24 mx-auto mb-4 sm:mb-6"></div>
-            <div class="space-y-2">
-              <p class="text-gray-500 text-sm sm:text-base font-medium">
-                &copy; 2025 Mohammed Sebbagh | Professional Teaching Portfolio
-              </p>
-              <p class="text-gray-400 text-xs sm:text-sm italic">
-                Dedicated to fostering scientific literacy, critical thinking, and lifelong learning in all students
-              </p>
-            </div>
-          </div>
-        </footer>
       </div>
     </>
         </Layout>
